@@ -31,4 +31,10 @@ class TicketsController extends Controller
 
         return redirect('/contact')->with('status', 'Your ticket has been created! Its unique id is: ' . $slug);
     }
+
+    public function show($slug)
+    {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        return view('tickets.show', compact('ticket'));
+    }
 }
