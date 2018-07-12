@@ -49,7 +49,7 @@ class TicketsController extends Controller
         $ticket = Ticket::whereSlug($slug)->firstOrFail();
         $ticket->title = $request->get('title');
         $ticket->content = $request->get('content');
-        if ($request->get('status') != null){
+        if ($request->get('status') != null) {
             $ticket->status = 0;
         } else {
             $ticket->status = 1;
