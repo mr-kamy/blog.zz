@@ -55,6 +55,14 @@ class TicketsController extends Controller
             $ticket->status = 1;
         }
         $ticket->save();
-        return redirect(action('TicketsController@edit', $ticket->slug))->with('status', 'The ticket ' . $slug . 'has been updated!');
+        return redirect(action('TicketsController@edit', $ticket->slug))->with('status', 'The ticket ' . $slug .
+            'has been updated!');
+    }
+
+    public function destroy($slug)
+    {
+        $ticket = Ticket::whereSlug($slug)->firstOrFail();
+        $ticket->delete();
+        return redirect('/tickets')->with('status', 'The ticket . ' . $slug . 'has been deleted!');
     }
 }

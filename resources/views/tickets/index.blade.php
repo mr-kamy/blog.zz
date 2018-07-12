@@ -8,6 +8,12 @@
                 <h2 class="card-title">Tickets</h2>
             </div>
 
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             @if($tickets->isEmpty())
                 <p> There is no ticket. </p>
             @else
