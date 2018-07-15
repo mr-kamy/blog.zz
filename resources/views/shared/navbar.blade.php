@@ -15,19 +15,39 @@
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
+
+            @guest
             <li class="nav-item dropdown">
-
-
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Member
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/users/register">Register</a>
-                    <a class="dropdown-item" href="/users/login">Login</a>
+                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li>
+            @else
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+
+
         </ul>
     </div>
 </nav>
