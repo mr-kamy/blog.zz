@@ -29,6 +29,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['role:admin']], function (){
-    Route::get('users', 'UsersController@index');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function (){
+    Route::get('/users', 'UsersController@index');
+    Route::get('/users/{id}/edit', 'UsersController@edit');
+    Route::post('/users/{id}/edit', 'UsersController@store');
+    Route::get('/roles', 'RolesController@index');
+    Route::get('/roles/create', 'RolesController@create');
+    Route::post('/roles/create', 'RolesController@store');
 });
