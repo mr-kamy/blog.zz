@@ -34,14 +34,14 @@
                         </select>
                     </div>
 
-                        <div class="form-group">
-                            <label for="password" class="col-lg-2 control-label">Password</label>
+                    <div class="form-group">
+                        <label for="password" class="col-lg-2 control-label">Password</label>
 
-                            <div class="col-lg-10">
-                                <input type="password" class="form-control" name="password">
+                        <div class="col-lg-10">
+                            <input type="password" class="form-control" name="password">
 
-                            </div>
                         </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="password" class="col-lg-2 control-label">Confirm password</label>
@@ -56,7 +56,7 @@
                         <div class="col-lg-10 col-lg-offset-2">
                             <button type="reset" class="btn btn-default">Cancel</button>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
 
                             </button>
                         </div>
@@ -66,4 +66,5 @@
             </div>
         </div>
     </div>
+
 @endsection
