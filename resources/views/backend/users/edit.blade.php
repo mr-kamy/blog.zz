@@ -27,7 +27,13 @@
                         <label for="role" class="bmd-label-floating">Role</label>
                         <select class="form-control" id="role" name="role">
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}">
+                                <option value="{{ $role->id }}"
+                                @foreach($selectedRoles as $selectedRole)
+                                    @if($role->name == $selectedRole)
+                                            selected="selected"
+                                    @endif
+                                @endforeach
+                                >
                                     {{ $role->name }}
                                 </option>
                             @endforeach
