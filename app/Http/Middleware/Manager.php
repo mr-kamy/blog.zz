@@ -9,12 +9,18 @@ class Manager
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $role)
     {
+        if (!$request->user()->hasRole($role)) {
+            return redirect('/');
+        }
+
         return $next($request);
+
     }
+
 }

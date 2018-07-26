@@ -29,6 +29,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'manager'], function (){
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['manager:admin']], function (){
     Route::get('users', 'UsersController@index');
+    Route::get('/users/{id}/edit', 'UsersController@edit');
+    Route::post('/users/{id}/edit', 'UsersController@update');
 });
